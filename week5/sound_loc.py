@@ -65,3 +65,16 @@ while True:
     stream.write(y)
     if keyboard.is_pressed('q'):
         break
+    if keyboard.is_pressed('s'):
+        if rendering:
+            rendering = False
+            dir = 0
+            print("Sound rendering off.")
+        else:
+            rendering = True
+            dir = target_dir
+            print("Sound rendering on.")
+
+stream.stop_stream()
+stream.close()
+p.terminate()
