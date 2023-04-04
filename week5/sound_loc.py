@@ -9,7 +9,7 @@ HEAD = 10
 DIS = 1
 Vs = 339
 
-max_delay = int(RATE * 2 * HEAD * .01 / Vs)
+max_delay = int(RATE * 2 * HEAD * 0.01 / Vs)
 aheadL = np.zeros(max_delay, dtype=np.int16)
 aheadR = np.zeros(max_delay, dtype=np.int16)
 out = np.zeros(CHUNK * 2, dtype=np.int16)
@@ -37,14 +37,15 @@ def Sound_rendering(signal, dir):
     else:
         for i in range(CHUNK):
             if i < delay:
-                out[i * 2 + 1] = aheadR[max(-delay + i)]
+                out[i * 2 + 1] = aheadR[max_delay - delay + i]
             else:
                 out[i * 2] = signal[(i - delay) * 2]
-            out[i * 2] = int(out[i * 2] * DIS / (DIS + distance))
+            out[i * 2] = int(out[i * 2 + 1] * DIS / (DIS + distance))
             out[i * 2] = signal[i * 2]
-    for i in range(max_delay):
-        aheadL[i] = signal[(CHUNK - max_delay + i) * 2]
-        aheadR[i] = signal[(CHUNK - max_delay + i) * 2]
+
+        for i in range(max_delay):
+            aheadL[i] = signal[(CHUNK - max_delay + i) * 2]
+            aheadR[i] = signal[(CHUNK - max_delay + i) * 2]
 
     return out
 
@@ -59,9 +60,9 @@ dir = target_dir
 
 while True:
     samples = stream.read(CHUNK)
-    in_data = np.fromstring(samples, dtype=np.int16)
+    in_data = np.frombuffer(samples, dtype=np.int16)
     out = Sound_rendering(in_data, dir)
-    y = out.tostring()
+    y = out.tobytes()
     stream.write(y)
     if keyboard.is_pressed('q'):
         break

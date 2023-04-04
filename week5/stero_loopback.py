@@ -5,7 +5,7 @@ import keyboard
 RATE = 16000
 CHUNK = int(RATE / 10)
 
-output = np.zeros(CHUNK * 2, dytpe=np.int16)
+output = np.zeros(CHUNK * 2, dtype=np.int16)
 
 
 def Select_channel(signal, ch):
@@ -26,12 +26,12 @@ stream = p.open(format=pyaudio.paInt16, channels=2, rate=RATE, input=True, outpu
 
 while True:
     samples = stream.read(CHUNK)
-    in_data = np.fromstring(samples, dtype=np.int16)
+    in_data = np.frombuffer(samples, dtype=np.int16)
     out = Select_channel(in_data, 'right')
-y = out.tostring()
-stream.write(y)
-if keyboard.is_pressed('q'):
-    break
+    y = out.tobytes()
+    stream.write(y)
+    if keyboard.is_pressed('q'):
+        break
 
 stream.stop_stream()
 stream.close()
