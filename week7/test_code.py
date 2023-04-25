@@ -1,8 +1,10 @@
 import cv2
 import numpy as np
 
-cap = cv2.VideoCapture(0, cv2.CAP_MSMF)
+# cap = cv2.VideoCapture(0, cv2.CAP_MSMF)
+cap = cv2.VideoCapture(1)
 font = cv2.FONT_HERSHEY_SIMPLEX
+
 while True:
     ret, frame = cap.read()
     b, g, r = np.average(frame, axis=(0, 1))
