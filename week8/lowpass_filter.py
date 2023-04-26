@@ -4,10 +4,12 @@ import numpy as np
 ksize = int(input('Enter kernel size:'))
 kernel = np.ones((ksize, ksize), np.float32) / (ksize * ksize)
 ngain = float(input('Enter noise gain:'))
-width = 320
-height = 240
+# width = 320
+# height = 240
+width = 640
+height = 480
 # cap = cv2.VideoCapture(0, cv2.CAP_MSMF)
-cap = cv2.VideoCapture('./video.mp4')
+cap = cv2.VideoCapture(1)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
 while True:
