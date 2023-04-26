@@ -3,7 +3,8 @@ import numpy as np
 
 ksize = int(input('Enter kernel size:'))
 kernel = np.ones((ksize, ksize), np.float32) / (ksize * ksize)
-cap = cv2.VideoCapture(0, cv2.CAP_MSMF)
+# cap = cv2.VideoCapture(0, cv2.CAP_MSMF)
+cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 while True:
@@ -15,5 +16,7 @@ while True:
         key = cv2.waitKey(33)
         if key == ord('q'):
             break
+    else:
+        print("nn")
 cap.release()
 cv2.destroyAllWindows()
