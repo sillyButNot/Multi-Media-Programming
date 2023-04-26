@@ -6,7 +6,8 @@ kernel = np.ones((ksize, ksize), np.float32) / (ksize * ksize)
 ngain = float(input('Enter noise gain:'))
 width = 320
 height = 240
-cap = cv2.VideoCapture(0, cv2.CAP_MSMF)
+# cap = cv2.VideoCapture(0, cv2.CAP_MSMF)
+cap = cv2.VideoCapture('./video.mp4')
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
 while True:
