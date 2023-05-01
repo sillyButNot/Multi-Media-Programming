@@ -21,14 +21,14 @@ while True:
             y=random.randint(0, height-1)
             x=random.randint(0, width-1)
             Y[y][x] = 255
-            filtered = cv2.medianBlur(Y, ksize)
-            cnoisy = cv2.cvtColor(cv2.merge((Y, Cr, Cb)), cv2.COLOR_YCrCb2BGR)
-            cfiltered = cv2.cvtColor(cv2.merge((filtered, Cr, Cb)), cv2.COLOR_YCrCb2BGR)
-            cframe = np.hstack((frame, cnoisy, cfiltered))
-            cv2.imshow('Original, Noisy, Median-filtered', cframe)
+        filtered = cv2.medianBlur(Y, ksize)
+        cnoisy = cv2.cvtColor(cv2.merge((Y, Cr, Cb)), cv2.COLOR_YCrCb2BGR)
+        cfiltered = cv2.cvtColor(cv2.merge((filtered, Cr, Cb)), cv2.COLOR_YCrCb2BGR)
+        cframe = np.hstack((frame, cnoisy, cfiltered))
+        cv2.imshow('Original, Noisy, Median-filtered', cframe)
 
-            key = cv2.waitKey(33)
-            if key == ord('q'):
-                break
+        key = cv2.waitKey(33)
+        if key == ord('q'):
+            break
 cap.release()
 cv2.destroyAllWindows()

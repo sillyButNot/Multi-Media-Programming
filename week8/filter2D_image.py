@@ -5,7 +5,7 @@ ksize = int(input('Enter kernel size:'))
 kernel = np.ones((ksize, ksize), np.float32) / (ksize * ksize)
 # cap = cv2.VideoCapture(0, cv2.CAP_MSMF)
 # cap = cv2.VideoCapture('video.mp4')
-img = cv2.imread('image.jpg')
+img = cv2.imread('s.jpg')
 # cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 # cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 width = 640
