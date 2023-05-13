@@ -22,11 +22,11 @@ def Filter2D_FT(Fin, H):
 
 N = 256
 # fcut = float(input("Enter cut-off radius:[0~1]"))
-fcut = 0.9
+fcut = 0.5
 
 H = Build_H(N, fcut)
 img_H = (H * 255).astype(np.uint8)
-img = cv2.imread('image/hand1.jpg')
+img = cv2.imread('image/hand_noise.jpg')
 # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) / 255
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 r_gray = cv2.resize(gray, (N, N))
@@ -37,4 +37,4 @@ FF = Filter2D_FT(F_sh, H)
 iF_sh = np.fft.ifftshift(FF)
 i_gray = np.clip(np.abs(np.fft.ifft2(iF_sh)), 0, 255)
 cframe = np.hstack((img_H, r_gray, i_gray))
-cv2.imwrite('image/hand_0.9.jpg', cframe)
+cv2.imwrite('image/pepper0.5.jpg', cframe)
