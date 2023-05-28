@@ -1,9 +1,9 @@
 import numpy as np
 
 
-with open("list_tr","rt") as file:
+with open("list_ts","rt") as file:
     x = file.read()
 
-with open("list_tr", "wt") as file:
-    x = x.replace("\main\work.23\images", "\images")
+with open("list_ts", "wt") as file:
+    x = x.replace("./images\\", "./images/")
     file.write(x)
