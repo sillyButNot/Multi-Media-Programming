@@ -16,7 +16,7 @@ b_size = int(10)
 # n_tag = int(input('Enter number of classes : '))
 n_tag = int(6)
 # l_rate = float(input('Enter learning rate:'))
-l_rate = float(0.01)
+l_rate = float(0.1)
 SX = SY = 64
 
 
