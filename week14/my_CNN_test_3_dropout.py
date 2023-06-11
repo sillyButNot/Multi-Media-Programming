@@ -16,7 +16,7 @@ ts_file = 'list_te'
 # n_epochs = int(input('Enter number of epochs:'))
 n_epochs = int(20)
 # b_size = int(input('Enter number of classes:'))
-b_size = int(4)
+b_size = int(16)
 
 # n_tag = int(input('Enter number of classes : '))
 n_tag = int(6)
